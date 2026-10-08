@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import logo from "../assets/images/logo_websol.png";
+
+import logo from "../assets/images/logo_1.png";
 import { CiMail } from "react-icons/ci";
 import { TfiLocationPin } from "react-icons/tfi";
 import { MdOutlineCall } from "react-icons/md";
@@ -12,12 +12,12 @@ function Footer() {
             <div className="flex flex-col md:flex-row items-start justify-evenly gap-4 md:gap-0 ">
 {/* logo & motto  */}
 <div className="flex flex-col space-y-2 md:space-y-4">
-<Link to="/">  <img
+<a href="#home">  <img
         src={logo}
         alt="WebSol"
         className="h-10 w-auto"
       />
-      </Link>
+      </a>
           <p className="text-[0.7rem] md:text-xs font-semibold uppercase tracking-[0.3em] text-blue-800">
   DESIGN · DEVELOP · DELIVER
 </p>
@@ -29,26 +29,26 @@ back-end solutions.</p>
 {/* QUICK LINKS */}
 <div className="flex flex-col md:gap-2 gap-1  ">
     <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">QUICK LINKS</h2>
-    <Link to="/" className="  focus-visible:outline-2
+    <a href="#home" className="  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
-  hover:text-teal-500 text-sm font-normal text-gray-600 " >Home</Link>
-    <Link to="/about" className="  focus-visible:outline-2
+  hover:text-green-logo text-sm font-normal text-gray-600 " >Home</a>
+    <a href="#about" className="  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
-  hover:text-teal-500 text-sm font-normal text-gray-600 " >About WebSol</Link>
-     <Link to="/services" className="  focus-visible:outline-2
+  hover:text-green-logo text-sm font-normal text-gray-600 " >About WebSol</a>
+     <a href="#services" className="  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
-  hover:text-teal-500 text-sm font-normal text-gray-600 " >Services</Link>
-     <Link to="/contact" className="  focus-visible:outline-2
+  hover:text-green-logo text-sm font-normal text-gray-600 " >Services</a>
+     <a href="#contact" className="  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
-  hover:text-teal-500 text-sm font-normal text-gray-600 " >Contact</Link>
+  hover:text-green-logo text-sm font-normal text-gray-600 " >Contact</a>
 
 </div>
 {/* CONTACT  */}
@@ -82,7 +82,7 @@ back-end solutions.</p>
   <a
     href="#"
     aria-label="WebSol on LinkedIn"
-    className="text-gray-600 transition-colors hover:text-teal-500
+    className="text-gray-600 transition-colors hover:text-green-logo
                focus-visible:outline-2 focus-visible:outline-offset-4
                focus-visible:outline-teal-500"
   >
@@ -92,7 +92,7 @@ back-end solutions.</p>
   <a
     href="#"
     aria-label="WebSol on GitHub"
-    className="text-gray-600 transition-colors hover:text-teal-500
+    className="text-gray-600 transition-colors hover:text-green-logo
                focus-visible:outline-2 focus-visible:outline-offset-4
                focus-visible:outline-teal-500"
   >
@@ -101,7 +101,7 @@ back-end solutions.</p>
   <a
     href="#"
     aria-label="WebSol on Instagram"
-    className="text-gray-600 transition-colors hover:text-teal-500
+    className="text-gray-600 transition-colors hover:text-green-logo
                focus-visible:outline-2 focus-visible:outline-offset-4
                focus-visible:outline-teal-500"
   >
