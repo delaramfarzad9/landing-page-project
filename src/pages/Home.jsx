@@ -10,17 +10,19 @@ function Home() {
         <HeroSection />
       </section>
 
-      <section id="about" className="scroll-mt-16">
-        <AboutSection />
-      </section>
-
-      <section id="services" className="scroll-mt-16">
+       <section id="services" className="scroll-mt-16">
         <ServicesSection />
       </section>
 
+      {/* <section id="about" className="scroll-mt-16">
+        <AboutSection />
+      </section>
+
+     
+
       <section id="contact" className="scroll-mt-16">
         <ContactSection />
-      </section>
+      </section> */}
     </>
   );
 }

@@ -7,9 +7,9 @@ function HeroSection() {
           
            <dv className="flex flex-col justify-center items-center gap-4 ">
             
-             <p className="text-blue-800 font-semibold tracking-wider text-sm ">WEBSOL · DIGITAL SOLUTIONS</p>
+             <p className="text-blue-800 font-semibold tracking-wider text-sm font-space">WEBSOL · DIGITAL SOLUTIONS</p>
 
-            <h1 id="hero-heading" className="text-center font-manrope  text-4xl sm:text-5xl lg:text-6xl font-extrabold text-shadow-stone-400 text-shadow-md leading-[1.2]">
+            <h1 id="hero-heading" className="text-center  text-4xl sm:text-5xl lg:text-7xl font-bold text-shadow-stone-400 text-shadow-md leading-[1.2] font-space">
               <span className="text-blue-600   block  ">Digital Design  </span>
                <span className=" block ">Development Agency</span>
                </h1>
@@ -20,7 +20,7 @@ function HeroSection() {
           className="inline-flex mt-8 mb-10 justify-center
     items-center md:gap-3 gap-2 rounded-full   bg-blue-logo px-3 md:px-6 md:py-4 py-3
     text-sm font-semibold text-gray-100 hover:text-white shadow-lg transition-all duration-300 hover:bg-green-logo hover:shadow-xl
-    hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-500"
+    hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-500 font-space"
           href="#contact"
         >
           

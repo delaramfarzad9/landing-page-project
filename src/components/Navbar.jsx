@@ -4,7 +4,7 @@ import { IoMdClose } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoIosInformationCircleOutline } from "react-icons/io";
 import { IoChevronForwardSharp } from "react-icons/io5";
-import logo from "../assets/images/logo_1.png";
+import logo from "../assets/images/logo_3.png";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { CiMail } from "react-icons/ci";
 
@@ -33,7 +33,7 @@ function Navbar() {
   return (
     <header
       className=" h-16 sticky  top-0 left-0 right-0 z-50   backdrop-blur-xl bg-stone-200/50    transition-colors duration-300
-    shadow-lg "
+    shadow-lg font-space tracking-tighter"
     >
       <nav
         aria-label="Main navigation"
