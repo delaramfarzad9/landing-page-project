@@ -14,15 +14,15 @@ function Home() {
         <ServicesSection />
       </section>
 
-      {/* <section id="about" className="scroll-mt-16">
+      <section id="about" className="scroll-mt-16">
         <AboutSection />
       </section>
 
      
 
-      <section id="contact" className="scroll-mt-16">
+      {/* <section id="contact" className="scroll-mt-16">
         <ContactSection />
-      </section> */}
+      </section> */} 
     </>
   );
 }

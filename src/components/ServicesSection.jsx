@@ -2,6 +2,7 @@ import { FiPenTool, FiCode, FiTrendingUp, FiArrowLeft, FiArrowRight, FiLayers, F
 import useEmblaCarousel from "embla-carousel-react";
 import { GoArrowUpRight } from "react-icons/go";
 import Autoplay from "embla-carousel-autoplay";
+import CtaButton from "./CtaButton";
 
 
 const services = [
@@ -11,8 +12,6 @@ const services = [
     description:
       "We design intuitive digital experiences, from wireframes and prototypes to polished interfaces that put users first.",
     icon: FiPenTool,
-
-    bgColor: "bg-[#17252D]",
   },
   {
     id: "web-development",
@@ -20,8 +19,7 @@ const services = [
     description:
       "We build fast, responsive websites and web applications with clean code, seamless functionality, and modern technologies.",
     icon: FiCode,
-   
-    bgColor: "bg-cyan-900",
+
   },
   {
     id: "website-optimization",
@@ -29,8 +27,6 @@ const services = [
     description:
       "We enhance website performance, accessibility, and usability to create faster, smoother experiences across devices.",
     icon: FiTrendingUp,
-   
-    bgColor: "bg-blue-900",
   },
   {
     id: "branding-identity",
@@ -38,8 +34,6 @@ const services = [
     description:
       "We create distinctive logos, colour palettes, typography, and branded visuals that make businesses memorable.",
     icon: FiLayers,
-   
-    bgColor: "bg-[#31245C]",
   },
   {
     id: "ecommerce",
@@ -47,8 +41,6 @@ const services = [
     description:
       "We develop engaging online stores with intuitive product discovery, smooth shopping journeys, and user-friendly checkout experiences.",
     icon: FiShoppingBag,
-   
-    bgColor: "bg-[#243F76]",
   },
   {
     id: "seo-digital-strategy",
@@ -56,8 +48,6 @@ const services = [
     description:
       "We improve search visibility, refine content strategy, and help businesses connect with the right audience online.",
     icon: FiSearch,
-  
-    bgColor: "bg-teal-900",
   },
 ];
 
@@ -88,7 +78,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     {/* cards section */}
     {/* Embla viewport */}
   <div   ref={emblaRef}
-  className="mx-4 p-2 my-10 overflow-hidden md:mx-10 lg:mx-20 ">
+  className="  mx-4 px-2  pt-6 pb-10 my-6 overflow-hidden md:mx-10 lg:mx-20 ">
       {/* Embla container */}
         <div  className="-ml-5 flex touch-pan-y">
       {services.map((service,index) => {
@@ -96,17 +86,28 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
 
         return (
      <div   key={service.id}
-    className="min-w-0 flex-[0_0_100%] pl-5 md:flex-[0_0_50%] lg:flex-[0_0_33.333333%]">
-             <article className={`relative flex h-full flex-col gap-2 rounded-xl border border-gray-200 pt-10 pb-5 px-7 shadow-md  ${service.bgColor}`} key={service.id}>
-         {/* icon  */}
-    <Icon size={30} className="absolute  top-5 left-5  shrink-0 text-gray-100" />
-    <span className="absolute  top-5 right-5 text-gray-200  shrink-0 font-space">{String(index + 1).padStart(2, "0")}</span>
+    className="    min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3">
+      {/* each Card  */}
+             <article className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 p-7 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
+  hover:border-green-logo/40 hover:shadow-xl active:translate-y-0 
+   active:scale-[.97] bg-gray-100">
+         {/* icon & number */}
+    <div className="flex items-start justify-between">
+     <span className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100">
+       <Icon size={28}  aria-hidden="true" />
+     </span>
+      <span className=" text-gray-400  font-space text-sm font-semibold duration-300 group-hover:text-green-logo">{String(index + 1).padStart(2, "0")}</span>
+    </div>
+   
  
  
 {/* service title  */}
-            <h3 className="mt-7 text-xl  text-gray-100 font-semibold  font-space">{service.title}</h3>
+            <h3 className="mt-6 text-xl   font-semibold   border-b pb-4 border-gray-200  font-space text-blue-800">{service.title}</h3>
            
-            <p className="text-gray-200">{service.description}</p>
+            <p className="text-gray-600 pt-4 ">{service.description}</p>
+            {/* accent bar  */}
+            <span aria-hidden="true" className="absolute inset-x-0 bottom-0 h-1  origin-left scale-x-0 bg-linear-to-r from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-x-100"/>
+              {/* <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1  origin-bottom scale-y-0 bg-linear-to-t from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-y-100"/>  */}
           </article>
      </div>
         );
@@ -120,7 +121,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     type="button"
     onClick={() => emblaApi?.scrollPrev()}
     aria-label="Previous services"
-    className="rounded-full border border-gray-300 p-3 transition-colors hover:border-blue-600 hover:text-blue-600"
+    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg"
   >
     <FiArrowLeft size={20} />
   </button>
@@ -129,22 +130,12 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     type="button"
     onClick={() => emblaApi?.scrollNext()}
     aria-label="Next services"
-    className="rounded-full border border-gray-300 p-3 transition-colors hover:border-blue-600 hover:text-blue-600"
+    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg"
   >
     <FiArrowRight size={20} />
   </button>
 </div>
-      <a
-           className="inline-flex  justify-center
-     items-center md:gap-3 gap-2 rounded-full   bg-blue-logo px-3 md:px-6 md:py-4 py-3
-     text-sm font-semibold text-gray-100 hover:text-white shadow-lg transition-all duration-300 hover:bg-green-logo hover:shadow-xl
-     hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-500"
-           href="#contact"
-         >
-           
-          <span className="font-bold tracking-wide font-space"> Start a Project</span>
-           <GoArrowUpRight aria-hidden="true"/>
-         </a>
+<CtaButton id="contact" text="Plan Your Project" icon={<GoArrowUpRight aria-hidden="true"/>}  font="font-space"/>
 </div>
   
 </section>
