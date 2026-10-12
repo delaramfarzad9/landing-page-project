@@ -3,10 +3,22 @@ import { useEffect, useState } from "react";
 import project1 from "../assets/images/hero_mockup_slides/Lumière_E-commerce.png";
 import project2 from "../assets/images/hero_mockup_slides/Serene _Flow _Yoga _Wellness _Homepage.png";
 import project3 from "../assets/images/hero_mockup_slides/AutoPrime_Homepage.png";
+import { motion, useScroll, useMotionValueEvent } from "motion/react";
+import { FiZap } from "react-icons/fi";
+import FloatingSticker from "./FloatingSticker";
+import { LuMonitorSmartphone } from "react-icons/lu";
+import { FiTarget } from "react-icons/fi";
 const slides = [project1, project2, project3];
 
 function MonitorSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showStickers, setShowStickers] = useState(false);
+
+const { scrollY } = useScroll();
+
+useMotionValueEvent(scrollY, "change", (latest) => {
+  setShowStickers(latest > 30);
+});
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,8 +28,11 @@ function MonitorSlider() {
     return () => clearInterval(interval);
   }, []);
 
+
+
+
   return (
-    <div className="w-full max-w-5xl mx-auto">
+    <div className="relative w-full max-w-5xl mx-auto">
       {/* monitor */}
       <div className="relative mx-auto">
         {/*  frame */}
@@ -62,6 +77,101 @@ function MonitorSlider() {
           />
         ))}
       </div>
+       {/* floating stickers  */}
+{/* Fast Performance */}
+<motion.div
+  initial={{ opacity: 0, y: -250, scale: 0.9 }}
+  animate={{
+    opacity: showStickers ? 1 : 0,
+    y: showStickers ? 0 : -250,
+    scale: showStickers ? 1 : 0.9,
+  }}
+  transition={{
+    opacity: {
+      duration: 1.2,
+      ease: "easeInOut",
+    },
+    y: {
+      duration: 1.5,
+      ease: "easeOut",
+    },
+    scale: {
+      duration: 1.5,
+      ease: "easeOut",
+    },
+  }}
+  className="absolute top-2 left-0 z-20 lg:top-12 lg:-left-4"
+>
+  <FloatingSticker
+    icon={<FiZap size={20} />}
+    text="Fast Performance"
+  />
+</motion.div>
+
+{/* Fully Responsive */}
+<motion.div
+  initial={{ opacity: 0, y: -300, scale: 0.9 }}
+  animate={{
+    opacity: showStickers ? 1 : 0,
+    y: showStickers ? 0 : -300,
+    scale: showStickers ? 1 : 0.9,
+  }}
+  transition={{
+  opacity: {
+    duration: 1,
+    delay: showStickers ? 0.4: 0,
+    ease: "easeOut",
+  },
+  y: {
+    duration: 1.2,
+    delay: showStickers ? 0.4 : 0,
+    ease: "easeOut",
+  },
+  scale: {
+    duration: 1.2,
+    delay: showStickers ? 0.4 : 0,
+    ease: "easeOut",
+  },
+}}
+  className="absolute top-1/2 right-0 z-20 lg:-right-5"
+>
+  <FloatingSticker
+    icon={<LuMonitorSmartphone size={20} />}
+    text="Fully Responsive"
+  />
+</motion.div>
+{/* User-Focused Design */}
+<motion.div
+  initial={{ opacity: 0, y: -250, scale: 0.9 }}
+  animate={{
+    opacity: showStickers ? 1 : 0,
+    y: showStickers ? 0 : -250,
+    scale: showStickers ? 1 : 0.9,
+  }}
+  transition={{
+    opacity: {
+      duration: 1,
+      delay: showStickers ? 0.9 : 0,
+    },
+    y: {
+      duration: 1.2,
+      delay: showStickers ? 0.9 : 0,
+      ease: "easeOut",
+    },
+    scale: {
+      duration: 1.2,
+      delay: showStickers ? 0.9 : 0,
+      ease: "easeOut",
+    },
+  }}
+  className="
+  absolute z-20 bottom-14 left-0 sm:bottom-24 sm:-left-2 lg:bottom-36 lg:-left-5"
+>
+  <FloatingSticker
+    icon={<FiTarget size={20} />}
+    text="User-Focused Design"
+  />
+</motion.div>
     </div>
   );
 }
