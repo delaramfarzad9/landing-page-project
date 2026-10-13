@@ -10,7 +10,7 @@ function FloatingSticker({
   return (
     // Continuous floating
     <motion.div
-      animate={shouldReduceMotion ? { y: 0 } : { y: [0, -8, 0] }}
+      animate={shouldReduceMotion ? { y: 0 } : { y: [0, -5, 0] }}
       transition={{
         duration: 4,
         repeat: shouldReduceMotion ? 0 : Infinity,
@@ -34,14 +34,14 @@ function FloatingSticker({
           },
         }}
       className={`
-  flex w-fit items-center gap-1 rounded-full bg-gray-100 px-2 py-1 text-[9px]
-  sm:gap-1.5 sm:px-3 sm:py-2 sm:text-xs lg:gap-2 lg:px-4 lg:py-3 lg:text-sm
-  font-space whitespace-nowrap shadow-md shadow-blue-900/20 hover:shadow-blue-900/40
+  flex w-fit items-center gap-1 rounded-full bg-white px-2 py-1 
+  sm:gap-1.5 sm:px-3 sm:py-2 sm:text-xs lg:gap-2 lg:px-4 lg:py-3 
+  font-space whitespace-nowrap shadow-lg shadow-blue-900/20 hover:shadow-blue-900/40
  
 `}
       >
-        <div className="text-green-logo">{icon}</div>
-<span className="font-medium text-blue-logo">{text}</span>
+        <div className="text-green-logo text-xs sm:text-base lg:text-2xl">{icon}</div>
+<span className="font-medium text-blue-logo text-[10px] sm:text-sm lg:text-xl">{text}</span>
       </motion.div>
     </motion.div>
   );

@@ -89,8 +89,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     className="    min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3">
       {/* each Card  */}
              <article className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 p-7 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
-  hover:border-green-logo/40 hover:shadow-xl active:translate-y-0 
-   active:scale-[.97] bg-gray-100">
+  hover:border-green-logo/40 hover:shadow-xl  bg-gray-100">
          {/* icon & number */}
     <div className="flex items-start justify-between">
      <span className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100">
@@ -121,7 +120,9 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     type="button"
     onClick={() => emblaApi?.scrollPrev()}
     aria-label="Previous services"
-    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg"
+    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg focus-visible:outline-2
+focus-visible:outline-offset-4
+focus-visible:outline-green-logo"
   >
     <FiArrowLeft size={20} />
   </button>
@@ -130,7 +131,9 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     type="button"
     onClick={() => emblaApi?.scrollNext()}
     aria-label="Next services"
-    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg"
+    className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg focus-visible:outline-2
+focus-visible:outline-offset-4
+focus-visible:outline-green-logo"
   >
     <FiArrowRight size={20} />
   </button>

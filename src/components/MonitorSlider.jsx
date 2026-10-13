@@ -100,10 +100,10 @@ useMotionValueEvent(scrollY, "change", (latest) => {
       ease: "easeOut",
     },
   }}
-  className="absolute top-2 left-0 z-20 lg:top-12 lg:-left-4"
+  className="absolute top-7 left-0 z-20 lg:top-12 lg:-left-4"
 >
   <FloatingSticker
-    icon={<FiZap size={20} />}
+    icon={<FiZap  />}
     text="Fast Performance"
   />
 </motion.div>
@@ -136,7 +136,7 @@ useMotionValueEvent(scrollY, "change", (latest) => {
   className="absolute top-1/2 right-0 z-20 lg:-right-5"
 >
   <FloatingSticker
-    icon={<LuMonitorSmartphone size={20} />}
+    icon={<LuMonitorSmartphone  />}
     text="Fully Responsive"
   />
 </motion.div>
@@ -165,10 +165,14 @@ useMotionValueEvent(scrollY, "change", (latest) => {
     },
   }}
   className="
-  absolute z-20 bottom-14 left-0 sm:bottom-24 sm:-left-2 lg:bottom-36 lg:-left-5"
+  absolute z-20
+  bottom-36 left-2
+  sm:bottom-40 sm:left-0
+  lg:bottom-36 lg:left-5
+"
 >
   <FloatingSticker
-    icon={<FiTarget size={20} />}
+    icon={<FiTarget className="" />}
     text="User-Focused Design"
   />
 </motion.div>
