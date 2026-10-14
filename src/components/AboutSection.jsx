@@ -51,7 +51,7 @@ const checkedpoints=[
     
 function AboutSection() {
     return (
-        <section id="about" className="lg:mt-20 mt-14 flex flex-col md:flex-row md:justify-between md:items-center gap-10 mx-4 md:mx-10 lg:mx-20  ">
+        <section id="about" className="lg:mt-20 mt-14 flex flex-col xl:flex-row md:justify-between md:items-center gap-10 mx-4 md:mx-10 lg:mx-20  ">
 
    {/* header  */}
     <div className="flex w-full flex-col items-start gap-1 md:flex-1 md:min-w-0">

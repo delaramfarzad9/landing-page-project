@@ -68,7 +68,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
   ],
 );
   return (
-<section id="services" >
+<section id="services" className="  mx-4 md:mx-10 lg:mx-20  ">
     {/* header  */}
     <div className="flex flex-col justify-center items-center gap-1">
         <p className="text-blue-800 font-semibold tracking-wider text-sm font-space">WHAT WE DO</p>
@@ -78,7 +78,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     {/* cards section */}
     {/* Embla viewport */}
   <div   ref={emblaRef}
-  className="  mx-4 px-2  pt-6 pb-10 my-6 overflow-hidden md:mx-10 lg:mx-20 ">
+  className="   px-2  pt-6 pb-10 my-6 overflow-hidden  ">
       {/* Embla container */}
         <div  className="-ml-5 flex touch-pan-y">
       {services.map((service,index) => {
@@ -88,7 +88,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
      <div   key={service.id}
     className="    min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3">
       {/* each Card  */}
-             <article className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 p-7 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
+             <article className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 px-7 pt-7 pb-5 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
   hover:border-green-logo/40 hover:shadow-xl  bg-gray-100">
          {/* icon & number */}
     <div className="flex items-start justify-between">
@@ -114,7 +114,7 @@ const [emblaRef, emblaApi] = useEmblaCarousel(
     </div>{/* End Embla container */}
   </div>{/* End Embla viewport */}
 {/* Carousel navigation & cta */}
-<div className="flex justify-between items-center md:mx-10 lg:mx-20 mb-8 mx-4 ">
+<div className="flex justify-between items-center  mb-8 ">
     <div className=" flex justify-end gap-3 *:text-gray-600 *:shadow ">
   <button
     type="button"

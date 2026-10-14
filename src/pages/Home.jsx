@@ -11,7 +11,7 @@ function Home() {
         <HeroSection />
       </section>
 
-       <section id="services" className="scroll-mt-16">
+       <section id="services" className="scroll-mt-16 ">
         <ServicesSection />
       </section>
 
@@ -23,9 +23,9 @@ function Home() {
         <TestimonialsSec />
       </section>
 
-      {/* <section id="contact" className="scroll-mt-16">
+      <section id="contact" className="scroll-mt-16">
         <ContactSection />
-      </section> */} 
+      </section> 
     </>
   );
 }

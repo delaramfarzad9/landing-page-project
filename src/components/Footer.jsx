@@ -1,11 +1,13 @@
 
 import logo from "../assets/images/logo_1.png";
-import { CiMail } from "react-icons/ci";
-import { TfiLocationPin } from "react-icons/tfi";
+
+
 import { MdOutlineCall } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { GrInstagram } from "react-icons/gr";
+import { MdOutlineEmail } from "react-icons/md";
+import { MdOutlineLocationOn } from "react-icons/md";
 function Footer() {
     return (
         <footer className="flex  flex-col  bg-sky-100 gap-2 md:gap-4  pt-8 mt-10 px-4 md:px-0">
@@ -59,7 +61,7 @@ back-end solutions.</p>
   focus-visible:outline-teal-500
   transition-colors duration-200
   hover:text-teal-500 text-sm font-normal text-gray-600 ">
-    <CiMail aria-hidden="true"/>
+    <MdOutlineEmail  aria-hidden="true"/>
     <span>hello@websol.com</span>
 
   </a>
@@ -73,7 +75,7 @@ back-end solutions.</p>
 
   </a>
   <address  className="flex items-center gap-1 text-sm font-normal not-italic text-gray-600">
-    <TfiLocationPin aria-hidden="true"/>
+    <MdOutlineLocationOn aria-hidden="true"/>
     <span>London, United Kingdom</span>
 
   </address>
@@ -105,7 +107,7 @@ back-end solutions.</p>
                focus-visible:outline-2 focus-visible:outline-offset-4
                focus-visible:outline-teal-500"
   >
-    <FaInstagram aria-hidden="true" />
+    <GrInstagram aria-hidden="true" />
   </a>
 </div>
 </div>
