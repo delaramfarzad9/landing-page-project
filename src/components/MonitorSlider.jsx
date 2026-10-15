@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import project1 from "../assets/images/hero_mockup_slides/Lumière_E-commerce.png";
-import project2 from "../assets/images/hero_mockup_slides/Serene _Flow _Yoga _Wellness _Homepage.png";
-import project3 from "../assets/images/hero_mockup_slides/AutoPrime_Homepage.png";
+import project1 from "../assets/images/hero_mockup_slides/websol_1.png";
+import project2 from "../assets/images/hero_mockup_slides/websol_2.png";
+import project3 from "../assets/images/hero_mockup_slides/websol_3.png";
 import { motion, useScroll, useMotionValueEvent } from "motion/react";
 import { FiZap } from "react-icons/fi";
 import FloatingSticker from "./FloatingSticker";

@@ -10,43 +10,74 @@ import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlineLocationOn } from "react-icons/md";
 function Footer() {
     return (
-        <footer className="flex  flex-col  bg-sky-100 gap-2 md:gap-4  pt-8 mt-10 px-4 md:px-0">
-            <div className="flex flex-col md:flex-row items-start justify-evenly gap-4 md:gap-0 ">
-{/* logo & motto  */}
-<div className="flex flex-col space-y-2 md:space-y-4">
+        <footer className="bg-gray-100 pt-8 md:pt-10 lg:pt-12 border-t border-green-logo">
+          {/* Gradient top border */}
+{/* <div className="absolute inset-x-0 top-0 h-2 bg-linear-to-r from-blue-800 via-freen-logo to-teal-400" /> */}
+            <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
+              
+              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1.2fr] lg:gap-10">
+{/* logo & motto & social media */}
+<div className="flex min-w-0 flex-col items-start gap-3">
 <a href="#home">  <img
         src={logo}
         alt="WebSol"
+        aria-label="WebSol home"
         className="h-10 w-auto"
       />
       </a>
           <p className="text-[0.7rem] md:text-xs font-semibold uppercase tracking-[0.3em] text-blue-800">
   DESIGN · DEVELOP · DELIVER
 </p>
-  <p className="max-w-md text-sm text-gray-500">We create thoughtful digital experiences through
-UI/UX design, front-end development, and reliable
-back-end solutions.</p> 
+<p className="max-w-sm text-sm leading-6 text-gray-600">
+  We create thoughtful digital experiences through UI/UX design,
+  front-end development, and reliable back-end solutions.
+</p>
+  {/* social media  */}
+  <div className="mt-2  flex items-center gap-3 ">
+  <a
+    href="https://linkedin.com"
+    aria-label="WebSol on LinkedIn"
+   className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
+  >
+    <FaLinkedinIn aria-hidden="true" />
+  </a>
+
+  <a
+    href="https://github.com"
+    aria-label="WebSol on GitHub"
+     className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
+  >
+    <FaGithub aria-hidden="true" />
+  </a>
+  <a
+    href="https://instagram.com"
+    aria-label="WebSol on Instagram"
+  className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
+  >
+    <GrInstagram aria-hidden="true" />
+  </a>
+</div>
 
 </div>
 {/* QUICK LINKS */}
-<div className="flex flex-col md:gap-2 gap-1  ">
+<div className="flex flex-col items-start gap-2">
     <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">QUICK LINKS</h2>
-    <a href="#home" className="  focus-visible:outline-2
+    <a href="#home" className="hover:scale-[1.02]  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
   hover:text-green-logo text-sm font-normal text-gray-600 " >Home</a>
-    <a href="#about" className="  focus-visible:outline-2
+    <a href="#about" className="hover:scale-[1.02]  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
   hover:text-green-logo text-sm font-normal text-gray-600 " >About WebSol</a>
-     <a href="#services" className="  focus-visible:outline-2
+     <a href="#services" className="hover:scale-[1.02]  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
   hover:text-green-logo text-sm font-normal text-gray-600 " >Services</a>
-     <a href="#contact" className="  focus-visible:outline-2
+     <a href="#contact" className="hover:scale-[1.02]  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
@@ -54,68 +85,39 @@ back-end solutions.</p>
 
 </div>
 {/* CONTACT  */}
-<div className="flex flex-col items-start md:gap-2 gap-1 ">
+<div className="flex min-w-0 flex-col items-start gap-2">
     <p className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">CONTACT</p>
-    <a href="mailto:hello@websol.com" className="flex justify-center items-center gap-1  focus-visible:outline-2
+    <a href="mailto:hello@websol.com" className="group hover:scale-[1.02] flex justify-center items-center gap-2  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
   transition-colors duration-200
   hover:text-teal-500 text-sm font-normal text-gray-600 ">
-    <MdOutlineEmail  aria-hidden="true"/>
+    <MdOutlineEmail  aria-hidden="true" className="text-gray-600 shrink-0 size-8 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 group-hover:bg-green-logo/90 group-hover:text-gray-100"/>
     <span>hello@websol.com</span>
 
   </a>
-<a href="tel:+442012345678" className="flex justify-center items-center gap-1  focus-visible:outline-2
+<a href="tel:+442012345678" className="group hover:scale-[1.02] flex justify-center items-center gap-2  focus-visible:outline-2
   focus-visible:outline-offset-4
   focus-visible:outline-teal-500
-  transition-colors duration-200
+  transition-all duration-200
   hover:text-teal-500 text-sm font-normal text-gray-600 ">
-    <MdOutlineCall aria-hidden="true"/>
+    <MdOutlineCall aria-hidden="true"   className="text-gray-600 shrink-0 size-8 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 group-hover:bg-green-logo/90 group-hover:text-gray-100"/>
     <span> +44 20 1234 5678</span>
 
   </a>
-  <address  className="flex items-center gap-1 text-sm font-normal not-italic text-gray-600">
-    <MdOutlineLocationOn aria-hidden="true"/>
+  <address  className="group flex items-center gap-2 text-sm font-normal not-italic text-gray-600">
+    <MdOutlineLocationOn aria-hidden="true" className="text-gray-600 shrink-0 size-8 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 group-hover:bg-green-logo/90 group-hover:text-gray-100"/>
     <span>London, United Kingdom</span>
 
   </address>
-  {/* social media  */}
-  <div className="mt-2 flex items-center gap-3">
-  <a
-    href="#"
-    aria-label="WebSol on LinkedIn"
-    className="text-gray-600 transition-colors hover:text-green-logo
-               focus-visible:outline-2 focus-visible:outline-offset-4
-               focus-visible:outline-teal-500"
-  >
-    <FaLinkedinIn aria-hidden="true" />
-  </a>
 
-  <a
-    href="#"
-    aria-label="WebSol on GitHub"
-    className="text-gray-600 transition-colors hover:text-green-logo
-               focus-visible:outline-2 focus-visible:outline-offset-4
-               focus-visible:outline-teal-500"
-  >
-    <FaGithub aria-hidden="true" />
-  </a>
-  <a
-    href="#"
-    aria-label="WebSol on Instagram"
-    className="text-gray-600 transition-colors hover:text-green-logo
-               focus-visible:outline-2 focus-visible:outline-offset-4
-               focus-visible:outline-teal-500"
-  >
-    <GrInstagram aria-hidden="true" />
-  </a>
-</div>
 </div>
             </div>
            
             {/* copy */}
-            <div className="mt-2 border-t border-teal-800/15 py-3 md:py-5 ">
+            <div className="mt-8 border-t border-teal-800/15 py-5">
                 <p className="text-center text-sm text-gray-500">&copy; 2026 WebSol. All rights reserved.</p>
+            </div>
             </div>
         </footer>
     );

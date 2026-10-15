@@ -10,7 +10,7 @@ function TestimonialCard({name,title,feedback,rating}){
     return(
 
      <article className="   group relative z-0 flex h-full flex-col items-start
-    gap-7 rounded-xl border border-blue-100 bg-white p-6
+    gap-7 rounded-xl border border-blue-100 bg-gray-50 p-6
     shadow-[0_4px_18px] shadow-blue-logo/8 transition-all duration-500 ease-in-out motion-safe:hover:z-10 motion-safe:hover:-translate-y-3
     motion-safe:hover:scale-[1.02] motion-reduce:transition-none hover:border-green-logo/30
  hover:shadow-[0_18px_35px] hover:shadow-blue-logo/16">

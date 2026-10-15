@@ -1,4 +1,4 @@
-import TestimonialCard from "./TestimonialCard"
+import TestimonialCard from "./TestimonialCard";
 
 const testimonials = [
   {
@@ -27,23 +27,36 @@ const testimonials = [
   },
 ];
 
-function TestimonialsSec() { 
-           
-    return (
-        <section id="testimonials" className="mx-4 md:mx-10 lg:mx-20 mt-20">  
-              <div className="flex flex-col justify-center items-center mt-10 mb-8 gap-2 mx-auto">
-                <p className="text-blue-800 font-semibold tracking-wider text-sm font-space ">CLIENT FEEDBACK</p>
-    <h2 className="text-blue-800 font-bold text-4xl  font-space ">What Our Clients Say</h2>
-    <p className="text-gray-600 ">A closer look at the experiences behind our work.</p>
- 
-                </div> 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                    {testimonials.map(({id,name,title,feedback,rating})=>(
-                        <TestimonialCard key={id} name={name} title={title} feedback={feedback} rating={rating}/>
-                    ))}
-                   
-                </div>
-        </section>
-    )
-      }
-export default TestimonialsSec
+function TestimonialsSec() {
+  return (
+    <section id="testimonials" className=" py-6 md:py-8 lg:py-10 xl:py-12">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
+        {/* header  */}
+        <div className="mb-8 flex flex-col items-center gap-2 text-center">
+          <p className="text-blue-800 font-semibold tracking-wider text-sm font-space ">
+            CLIENT FEEDBACK
+          </p>
+          <h2 className="text-blue-800 font-bold text-3xl sm:text-4xl font-space">
+            What Our Clients Say
+          </h2>
+          <p className="text-gray-600 ">
+            A closer look at the experiences behind our work.
+          </p>
+        </div>
+        {/* cards  */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          {testimonials.map(({ id, name, title, feedback, rating }) => (
+            <TestimonialCard
+              key={id}
+              name={name}
+              title={title}
+              feedback={feedback}
+              rating={rating}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+export default TestimonialsSec;
