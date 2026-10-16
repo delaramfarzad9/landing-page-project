@@ -27,6 +27,11 @@ function FloatingSticker({
       ? {}
       : { rotate: [0, -6, 6, -3, 0] }
   }
+  whileTap={
+  shouldReduceMotion
+    ? {}
+    : { scale: 0.96 }
+}
         transition={{
           rotate: {
             duration: 0.5,

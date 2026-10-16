@@ -111,14 +111,17 @@ function ServicesSection() {
                   {/* each Card  */}
                   <article
                     className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 px-7 pt-7 pb-5 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
-  hover:border-green-logo/40 hover:shadow-xl  bg-gray-50"
+  hover:border-green-logo/40 hover:shadow-xl  bg-gray-50   active:-translate-y-0.5
+  active:border-green-logo/40
+  active:shadow-lg"
                   >
                     {/* icon & number */}
                     <div className="flex items-start justify-between">
-                      <span className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100">
+                      <span className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100  group-active:bg-green-logo
+  group-active:text-gray-100">
                         <Icon size={28} aria-hidden="true" />
                       </span>
-                      <span className=" text-gray-400  font-space text-sm font-semibold duration-300 group-hover:text-green-logo">
+                      <span className=" text-gray-400  font-space text-sm font-semibold duration-300 group-hover:text-green-logo group-active:text-green-logo">
                         {String(index + 1).padStart(2, "0")}
                       </span>
                     </div>
@@ -132,9 +135,9 @@ function ServicesSection() {
                     {/* accent bar  */}
                     <span
                       aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-1  origin-left scale-x-0 bg-linear-to-r from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-x-100"
+                      className="absolute inset-x-0 bottom-0 h-1  origin-left scale-x-0 bg-linear-to-r from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100"
                     />
-                    {/* <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1  origin-bottom scale-y-0 bg-linear-to-t from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-y-100"/>  */}
+               
                   </article>
                 </div>
               );
@@ -150,9 +153,9 @@ function ServicesSection() {
               type="button"
               onClick={() => emblaApi?.scrollPrev()}
               aria-label="Previous services"
-              className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg focus-visible:outline-2
-focus-visible:outline-offset-4
-focus-visible:outline-green-logo"
+              className="rounded-full border border-gray-300 p-3 transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
+ active:bg-green-logo active:border-green-logo active:text-white
+    active:scale-95 focus-visible:outline-2   focus-visible:outline-offset-4  focus-visible:outline-green-logo"
             >
               <FiArrowLeft size={20} />
             </button>
@@ -161,9 +164,10 @@ focus-visible:outline-green-logo"
               type="button"
               onClick={() => emblaApi?.scrollNext()}
               aria-label="Next services"
-              className="rounded-full border border-gray-300 p-3 transition-colors hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg focus-visible:outline-2
-focus-visible:outline-offset-4
-focus-visible:outline-green-logo"
+              className="rounded-full border border-gray-300 p-3
+    transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
+ active:bg-green-logo active:border-green-logo active:text-white active:scale-95 focus-visible:outline-2
+    focus-visible:outline-offset-4 focus-visible:outline-green-logo"
             >
               <FiArrowRight size={20} />
             </button>

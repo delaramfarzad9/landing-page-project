@@ -6,7 +6,11 @@ function StatsBar({ stats,font }) {
           key={stat.id}
           className="group flex min-w-0 flex-col items-center justify-center gap-1 p-2 sm:p-4"
         >
-          <p className={`text-2xl fnt-bold text-white transition-transform duration-300 group-hover:-translate-y-1 ${font}`}>
+          <p className={`text-2xl font-bold text-white
+  transition-transform duration-300
+  motion-safe:group-hover:-translate-y-1
+  motion-safe:group-active:-translate-y-1
+  ${font}`}>
             {stat.value}
           </p>
           <p className="text-center text-xs text-white sm:text-sm">

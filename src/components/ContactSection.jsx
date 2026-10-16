@@ -72,7 +72,11 @@ function ContactSection() {
               <div className="flex flex-col gap-2 mt-5">
                 {contactInfo.map((item) => (
                   <div key={item.id} className="group flex items-center gap-3">
-                    <div className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo/90 group-hover:text-gray-100">
+                    <div className="flex size-14 items-center justify-center rounded-xl
+  bg-blue-logo/10 text-blue-logo
+  transition-colors duration-300
+  group-hover:bg-green-logo/90 group-hover:text-gray-100
+  group-active:bg-green-logo/90 group-active:text-gray-100">
                       <item.icon size={22} aria-hidden="true" />
                     </div>
 
@@ -80,13 +84,21 @@ function ContactSection() {
                       <p className="text-gray-700 font-medium">{item.name}</p>
                       {item.value ? (
                         <a
-                          className="wrap-break-word text-gray-600  transition-colors group-hover:text-blue-700 group-hover:underline"
+                         className="wrap-break-word text-gray-600 transition-colors
+  group-hover:text-blue-700 group-hover:underline
+  group-active:text-blue-700 group-active:underline
+  focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-green-logo"
                           href={item.value}
                         >
                           {item.text}
                         </a>
                       ) : (
-                        <p className="text-gray-600 wrap-break-word">{item.text}</p>
+                        <p className="wrap-break-word text-gray-600 transition-colors
+  group-hover:text-blue-700 group-hover:underline
+  group-active:text-blue-700 group-active:underline
+  focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-green-logo">{item.text}</p>
                       )}
                     </div>
                   </div>
@@ -105,7 +117,14 @@ function ContactSection() {
                       aria-label={link.name}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 shrink-0 size-14 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100"
+                  className="text-gray-600 shrink-0 size-14 flex items-center
+  justify-center rounded-lg bg-blue-logo/10 p-2
+  transition-all duration-200
+  hover:bg-green-logo/90 hover:text-gray-100
+  active:bg-green-logo/90 active:text-gray-100
+  active:scale-95
+  focus-visible:outline-2 focus-visible:outline-offset-2
+  focus-visible:outline-green-logo"
                     >
                       <link.icon size={22} aria-hidden="true" />
                     </a>
