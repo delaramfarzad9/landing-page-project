@@ -10,7 +10,7 @@ return (
     hover:shadow-xl hover:-translate-y-0.5
 
     active:bg-green-logo active:text-white
-    active:scale-[0.98]
+    active:scale-95
 
     focus-visible:outline-2
     focus-visible:outline-offset-4

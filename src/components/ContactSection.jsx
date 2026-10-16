@@ -94,11 +94,7 @@ function ContactSection() {
                           {item.text}
                         </a>
                       ) : (
-                        <p className="wrap-break-word text-gray-600 transition-colors
-  group-hover:text-blue-700 group-hover:underline
-  group-active:text-blue-700 group-active:underline
-  focus-visible:outline-2 focus-visible:outline-offset-2
-  focus-visible:outline-green-logo">{item.text}</p>
+                        <p className="wrap-break-word text-gray-600">{item.text}</p>
                       )}
                     </div>
                   </div>

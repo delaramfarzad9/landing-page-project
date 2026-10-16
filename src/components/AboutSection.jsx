@@ -99,10 +99,14 @@ function AboutSection() {
             {aboutCards.map((card) => (
               <div
                 key={card.id}
-                className="group flex items-start gap-4 rounded-lg border p-4   border-gray-100 shadow-md hover:shadow-xl transition-shadow duration-300 ease-in-out "
+                className="group flex items-start gap-4 rounded-lg border border-gray-100 p-4 shadow-md
+  transition-all duration-300 ease-in-out hover:shadow-xl  active:shadow-xl  active:border-green-logo/40"
               >
                 {/* icon  */}
-                <div className=" shrink-0 flex justify-center items-center w-12 h-12 rounded-md bg-blue-logo/10 text-blue-logo p-2 transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100 group-hover:shadow-lg">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center
+  rounded-md bg-blue-logo/10 p-2 text-blue-logo transition-all duration-300 group-hover:bg-green-logo
+  group-hover:text-gray-100 group-hover:shadow-lg group-active:bg-green-logo group-active:text-gray-100
+  group-active:shadow-lg">
                   <card.icon size={24} />
                 </div>
                 {/* text  */}
