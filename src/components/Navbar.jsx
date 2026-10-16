@@ -12,60 +12,108 @@ import { TbTools } from "react-icons/tb";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
-  const closeButtonRef = useRef(null);
   const menuRef = useRef(null);
+  const logoRef = useRef(null);
   function closeMenu() {
     setIsMenuOpen(false);
     menuButtonRef.current?.focus();
   }
-  // Manage keyboard navigation & prevent bg scrolling when the drawer is open
+  // Manage keyboard focus and Escape key
   useEffect(() => {
     function handleEscape(event) {
       if (event.key === "Escape") {
         closeMenu();
       }
     }
-    // Keep Tab & Shift+Tab navigation inside the mobile drawer.
-    function handleTab(event) {
-      if (event.key !== "Tab") return;
+   
+// Keep keyboard focus within the logo, X button and mobile links.
+function handleTab(event) {
+  if (event.key !== "Tab") return;
 
-      const focusableElements = menuRef.current?.querySelectorAll(
-        "button:not([disabled]), a[href]",
-      );
+  const links = menuRef.current?.querySelectorAll("a[href]");
+  if (!links?.length) return;
 
-      if (!focusableElements?.length) return;
+  const logo = logoRef.current;
+  const menuButton = menuButtonRef.current;
+  const firstLink = links[0];
+  const lastLink = links[links.length - 1];
+  const activeElement = document.activeElement;
 
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-      if (!menuRef.current.contains(document.activeElement)) {
-        event.preventDefault();
-        firstElement.focus();
-        return;
-      }
+  if (!logo || !menuButton) return;
 
-      if (event.shiftKey && document.activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-      } else if (!event.shiftKey && document.activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-      }
-    }
+  // Tab from Logo → X.
+  if (!event.shiftKey && activeElement === logo) {
+    event.preventDefault();
+    menuButton.focus();
+  }
+
+  // Tab from X → Home.
+  else if (!event.shiftKey && activeElement === menuButton) {
+    event.preventDefault();
+    firstLink.focus();
+  }
+
+  // Tab from Contact → Logo.
+  else if (!event.shiftKey && activeElement === lastLink) {
+    event.preventDefault();
+    logo.focus();
+  }
+
+  // Shift + Tab from Logo → Contact.
+  else if (event.shiftKey && activeElement === logo) {
+    event.preventDefault();
+    lastLink.focus();
+  }
+
+  // Shift + Tab from X → Logo.
+  else if (event.shiftKey && activeElement === menuButton) {
+    event.preventDefault();
+    logo.focus();
+  }
+
+  // Shift + Tab from Home → X.
+  else if (event.shiftKey && activeElement === firstLink) {
+    event.preventDefault();
+    menuButton.focus();
+  }
+
+  // Recover focus if it escapes the mobile navigation.
+  else if (
+    activeElement !== logo &&
+    activeElement !== menuButton &&
+    !menuRef.current.contains(activeElement)
+  ) {
+    event.preventDefault();
+    logo.focus();
+  }
+}
     if (isMenuOpen) {
-      closeButtonRef.current?.focus();
+menuButtonRef.current?.focus();
       document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
       document.addEventListener("keydown", handleTab);
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "";
       document.removeEventListener("keydown", handleTab);
     };
   }, [isMenuOpen]);
 
- // Close the mobile drawer when the viewport reaches the desktop breakpoint.
+  // 2. Lock background scrolling while the mobile menu is open
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isMenuOpen]);
+
+
+
+ // Close the mobile menu when swtiching to desktop
 useEffect(() => {
   const mediaQuery = window.matchMedia("(min-width: 768px)");
 
@@ -99,10 +147,16 @@ useEffect(() => {
           aria-label="Main navigation"
           className="relative z-50 mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 md:px-10 lg:px-12 "
         >
-          {/* logo */}
-          <a href="#home" aria-label="WebSol home">
-            <img src={logo} alt="WebSol" className="h-12 w-auto" />
-          </a>
+         {/* Logo: navigate home and close the mobile menu */}
+<a
+ref={logoRef}
+  href="#home"
+  aria-label="WebSol home"
+  onClick={() => setIsMenuOpen(false)}
+  className="rounded-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-logo"
+>
+  <img src={logo} alt="WebSol" className="h-12 w-auto" />
+</a>
           {/* desktop menu  */}
           <div className=" hidden md:flex flex-row gap-6 lg:gap-8 text-blue-800 *:text-lg *:font-bold *:transition-colors  *:duration-200 *:hover:text-green-logo *:focus-visible:outline-2 *:focus-visible:outline-offset-4 *:focus-visible:outline-teal-500">
             <a href="#home">Home</a>
@@ -117,50 +171,61 @@ useEffect(() => {
           <button
             type="button"
             ref={menuButtonRef}
-            aria-label="Open navigation menu"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
-            onClick={() => setIsMenuOpen(true)}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
             className="flex size-11 items-center justify-center rounded-lg text-blue-800 transition-colors hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo md:hidden"
           >
-            <IoMdMenu aria-hidden="true" className="text-2xl  text-blue-800" />
+           {isMenuOpen ? (
+  <IoMdClose aria-hidden="true" className="text-2xl" />
+) : (
+  <IoMdMenu aria-hidden="true" className="text-2xl" />
+)}
           </button>
         </nav>
       </header>
 
-      {isMenuOpen &&
-        createPortal(
-          <div className="inset-0 fixed z-50 md:hidden">
+      {createPortal(
+          <div
+ className={`fixed inset-x-0 top-16 bottom-0 z-40 md:hidden
+  transition-[visibility] duration-350
+  motion-reduce:transition-none
+  ${
+    isMenuOpen
+      ? "visible"
+      : "invisible pointer-events-none"
+  }`}
+>
             <button
               type="button"
               aria-label="Close navigation menu"
               onClick={closeMenu}
               tabIndex={-1}
-              className="absolute inset-0 bg-black/30 backdrop-blur-md"
+             className={`absolute inset-0 bg-black/30 backdrop-blur-md
+  transition-opacity duration-350 ease-out
+  motion-reduce:transition-none
+  ${isMenuOpen ? "opacity-100" : "opacity-0"}`}
             />
             <div
               ref={menuRef}
+              aria-hidden={!isMenuOpen}
+inert={!isMenuOpen}
               id="mobile-menu"
               role="dialog"
               aria-modal="true"
               aria-label="Mobile navigation"
-              className="absolute inset-y-0 left-0 z-50 flex h-dvh w-[min(85vw,360px)] flex-col overflow-y-auto rounded-r-2xl bg-sky-50 shadow-2xl"
+             className={`relative z-10 flex max-h-[calc(100dvh-4rem)] w-full flex-col
+  overflow-y-auto bg-sky-50 p-4 shadow-xl
+  transition-[transform,opacity] duration-350 ease-[cubic-bezier(0.22,1,0.36,1)]
+  motion-reduce:transition-none
+  ${
+    isMenuOpen
+      ? "translate-y-0 opacity-100"
+      : "-translate-y-4 opacity-0"
+  }`}
             >
-              <div className="flex items-center justify-between border-b border-blue-100 px-5 py-5">
-                <span className="font-space text-sm font-bold tracking-widest text-blue-800">
-                  MENU
-                </span>
-                {/* close button*/}
-                <button
-                  type="button"
-                  ref={closeButtonRef}
-                  aria-label="Close navigation menu"
-                  onClick={closeMenu}
-                  className="flex size-11 items-center justify-center rounded-full text-blue-800 transition-colors hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
-                >
-                  <IoMdClose aria-hidden="true" size={24} />
-                </button>
-              </div>
+            
               {/* links */}
 
               <div className="flex flex-col gap-2 p-4 text-blue-800">

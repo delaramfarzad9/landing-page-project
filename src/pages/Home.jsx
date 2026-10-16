@@ -7,11 +7,11 @@ import TestimonialsSec from "../components/TestimonialsSec";
 function Home() {
   return (
     <>
-      <section id="home">
+      <section >
         <HeroSection />
       </section>
 
-       <section id="services" className="scroll-mt-16 ">
+       <section id="services" className="scroll-mt-16">
         <ServicesSection />
       </section>
 
@@ -19,7 +19,7 @@ function Home() {
         <AboutSection />
       </section>
 
-      <section id="testimonials" className="scroll-mt-16">
+      <section id="testimonials" >
         <TestimonialsSec />
       </section>
 

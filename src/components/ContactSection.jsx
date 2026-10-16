@@ -32,7 +32,7 @@ const contactInfo = [
   {
     id: 4,
     name: "Website",
-    value: "https://www.websol.com",
+    value: "https://landing-page-project-rose.vercel.app",
     text: "www.websol.com",
     icon: FiGlobe,
   },

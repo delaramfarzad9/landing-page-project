@@ -111,7 +111,7 @@ function ServicesSection() {
                   {/* each Card  */}
                   <article
                     className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 px-7 pt-7 pb-5 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
-  hover:border-green-logo/40 hover:shadow-xl  bg-gray-100"
+  hover:border-green-logo/40 hover:shadow-xl  bg-gray-50"
                   >
                     {/* icon & number */}
                     <div className="flex items-start justify-between">

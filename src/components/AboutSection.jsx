@@ -56,7 +56,7 @@ function AboutSection() {
     <section id="about" className="py-6 md:py-8 lg:py-10 xl:py-12">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
         {/* two columns layout */}
-        <div className="flex flex-col gap-10 xl:flex-row xl:items-center">
+        <div className="flex flex-col gap-10 xl:flex-row xl:items-center ml-1 md:ml-0">
           {/* header  */}
           <div className="flex w-full min-w-0 flex-col items-start gap-1 xl:w-auto xl:flex-1">
             <p className="text-blue-800 font-semibold tracking-wider text-sm font-space ">

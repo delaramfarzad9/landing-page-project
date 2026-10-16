@@ -11,11 +11,10 @@ import { MdOutlineLocationOn } from "react-icons/md";
 function Footer() {
     return (
         <footer className="bg-gray-100 pt-8 md:pt-10 lg:pt-12 border-t border-green-logo">
-          {/* Gradient top border */}
-{/* <div className="absolute inset-x-0 top-0 h-2 bg-linear-to-r from-blue-800 via-freen-logo to-teal-400" /> */}
+         
             <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
               
-              <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1.2fr] lg:gap-10">
+              <div className="grid grid-cols-1 gap-8 ml-2 md:ml-0  sm:grid-cols-[1.6fr_.9fr_1fr] lg:grid-cols-[2fr_1fr_1.2fr] lg:gap-10">
 {/* logo & motto & social media */}
 <div className="flex min-w-0 flex-col items-start gap-3">
 <a href="#home">  <img
@@ -35,6 +34,8 @@ function Footer() {
   {/* social media  */}
   <div className="mt-2  flex items-center gap-3 ">
   <a
+  target="_blank"
+  rel="noopener noreferrer"
     href="https://linkedin.com"
     aria-label="WebSol on LinkedIn"
    className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
@@ -43,6 +44,8 @@ function Footer() {
   </a>
 
   <a
+  target="_blank"
+  rel="noopener noreferrer"
     href="https://github.com"
     aria-label="WebSol on GitHub"
      className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
@@ -50,6 +53,8 @@ function Footer() {
     <FaGithub aria-hidden="true" />
   </a>
   <a
+  target="_blank"
+  rel="noopener noreferrer"
     href="https://instagram.com"
     aria-label="WebSol on Instagram"
   className="text-gray-600 shrink-0 size-10 flex items-center justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 hover:bg-green-logo/90 hover:text-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo"
