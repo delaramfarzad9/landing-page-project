@@ -74,6 +74,19 @@ function ServicesSection() {
       }),
     ],
   );
+  const handlePrev = () => {
+  if (!emblaApi) return;
+
+  emblaApi.scrollPrev();
+  emblaApi.plugins().autoplay?.reset();
+};
+
+const handleNext = () => {
+  if (!emblaApi) return;
+
+  emblaApi.scrollNext();
+  emblaApi.plugins().autoplay?.reset();
+};
   return (
     <section
       id="services"
@@ -151,7 +164,7 @@ function ServicesSection() {
           <div className=" flex justify-end gap-3 *:text-gray-600 *:shadow ">
             <button
               type="button"
-              onClick={() => emblaApi?.scrollPrev()}
+              onClick={handlePrev}
               aria-label="Previous services"
               className="rounded-full border border-gray-300 p-3 transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
  active:bg-green-logo active:border-green-logo active:text-white
@@ -162,7 +175,7 @@ function ServicesSection() {
 
             <button
               type="button"
-              onClick={() => emblaApi?.scrollNext()}
+              onClick={handleNext}
               aria-label="Next services"
               className="rounded-full border border-gray-300 p-3
     transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg

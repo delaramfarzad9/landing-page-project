@@ -20,14 +20,13 @@ useMotionValueEvent(scrollY, "change", (latest) => {
   setShowStickers(latest > 30);
 });
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3500);
+useEffect(() => {
+  const timeout = setTimeout(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, 3500);
 
-    return () => clearInterval(interval);
-  }, []);
-
+  return () => clearTimeout(timeout);
+}, [currentSlide]);
 
 
 
