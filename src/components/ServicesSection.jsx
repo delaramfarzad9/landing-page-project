@@ -7,11 +7,15 @@ import {
   FiLayers,
   FiShoppingBag,
   FiSearch,
+  FiGrid,
+  FiColumns,
 } from "react-icons/fi";
 import useEmblaCarousel from "embla-carousel-react";
 import { GoArrowUpRight } from "react-icons/go";
 import Autoplay from "embla-carousel-autoplay";
 import CtaButton from "./CtaButton";
+import ServiceCard from "./ServiceCard";
+import { useState, useRef } from "react";
 
 const services = [
   {
@@ -59,6 +63,9 @@ const services = [
 ];
 
 function ServicesSection() {
+  const [showAll, setShowAll] = useState(false);
+  const headerRef = useRef(null);
+
   const [emblaRef, emblaApi] = useEmblaCarousel(
     {
       align: "start",
@@ -75,26 +82,36 @@ function ServicesSection() {
     ],
   );
   const handlePrev = () => {
-  if (!emblaApi) return;
+    if (!emblaApi) return;
 
-  emblaApi.scrollPrev();
-  emblaApi.plugins().autoplay?.reset();
-};
+    emblaApi.scrollPrev();
+    emblaApi.plugins().autoplay?.reset();
+  };
 
-const handleNext = () => {
-  if (!emblaApi) return;
+  const handleNext = () => {
+    if (!emblaApi) return;
 
-  emblaApi.scrollNext();
-  emblaApi.plugins().autoplay?.reset();
-};
+    emblaApi.scrollNext();
+    emblaApi.plugins().autoplay?.reset();
+  };
+  const toggleShowAll = () => {
+    if (showAll) {
+      headerRef.current?.scrollIntoView({
+        behavior: "instant",
+        block: "start",
+      });
+    }
+
+    setShowAll((prev) => !prev);
+  };
   return (
-    <section
-      id="services"
-      className=" py-6 md:py-8 lg:py-10 xl:py-12 "
-    >
+    <section id="services" className=" py-6 md:py-8 lg:py-10 xl:py-12 ">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
         {/* header  */}
-        <div className="flex flex-col items-center gap-2 text-center">
+        <div
+          ref={headerRef}
+          className="flex scroll-mt-20 flex-col items-center gap-2 text-center"
+        >
           <p className="text-blue-800 font-semibold tracking-wider text-sm font-space">
             WHAT WE DO
           </p>
@@ -106,62 +123,45 @@ const handleNext = () => {
           </p>
         </div>
         {/* cards section */}
-        {/* Embla viewport */}
-        <div
-          ref={emblaRef}
-          className="   px-2  pt-6 pb-10 my-6 overflow-hidden  "
-        >
-          {/* Embla container */}
-          <div className="-ml-5 flex touch-pan-y">
-            {services.map((service, index) => {
-              const Icon = service.icon;
-
-              return (
+        {showAll ? (
+          <div id="services-content" className="my-6 grid grid-cols-1 gap-6 px-2 pt-6 pb-10 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <div
+                key={service.id}
+                style={{ transitionDelay: `${index * 70}ms` }}
+                className="transition-all duration-500 ease-out
+      starting:translate-y-4 starting:opacity-0
+      motion-reduce:transition-none"
+              >
+                <ServiceCard service={service} index={index} />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div
+          id="services-content"
+            ref={emblaRef}
+            className="   px-2  pt-6 pb-10 my-6 overflow-hidden  "
+          >
+            {/* Embla viewport */}
+            {/* Embla container */}
+            <div className="-ml-5 flex touch-pan-y">
+              {services.map((service, index) => (
                 <div
                   key={service.id}
-                  className="    min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3"
+                  className="min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3"
                 >
-                  {/* each Card  */}
-                  <article
-                    className="group relative flex h-full flex-col overflow-hidden gap-2 rounded-2xl border border-gray-100 px-7 pt-7 pb-5 shadow-md  transition-all duration-300 ease-out hover:-translate-y-1 
-  hover:border-green-logo/40 hover:shadow-xl  bg-gray-50   active:-translate-y-0.5
-  active:border-green-logo/40
-  active:shadow-lg"
-                  >
-                    {/* icon & number */}
-                    <div className="flex items-start justify-between">
-                      <span className="flex size-14 items-center justify-center rounded-xl bg-blue-logo/10  text-blue-logo transition-colors duration-300  group-hover:bg-green-logo group-hover:text-gray-100  group-active:bg-green-logo
-  group-active:text-gray-100">
-                        <Icon size={28} aria-hidden="true" />
-                      </span>
-                      <span className=" text-gray-400  font-space text-sm font-semibold duration-300 group-hover:text-green-logo group-active:text-green-logo">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-
-                    {/* service title  */}
-                    <h3 className="mt-6 text-xl   font-semibold   border-b pb-4 border-gray-200  font-space text-blue-800">
-                      {service.title}
-                    </h3>
-
-                    <p className="text-gray-600 pt-4 ">{service.description}</p>
-                    {/* accent bar  */}
-                    <span
-                      aria-hidden="true"
-                      className="absolute inset-x-0 bottom-0 h-1  origin-left scale-x-0 bg-linear-to-r from-blue-logo to-green-logo transition-all duration-300 ease-out group-hover:scale-x-100 group-active:scale-x-100"
-                    />
-               
-                  </article>
+                  <ServiceCard service={service} index={index} />
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
-          {/* End Embla container */}
-        </div>
+        )}
+        {/* End Embla container */}
         {/* End Embla viewport */}
         {/* Carousel navigation & cta */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-          <div className=" flex justify-end gap-3 *:text-gray-600 *:shadow ">
+      {!showAll && (    <div className=" flex justify-end gap-3 *:text-gray-600 *:shadow ">
             <button
               type="button"
               onClick={handlePrev}
@@ -184,13 +184,42 @@ const handleNext = () => {
             >
               <FiArrowRight size={20} />
             </button>
+          </div>)}
+          {/* CTA button & see all services button */}
+         <div className="ml-auto flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+            {/* show all services button  */}
+            <button
+              onClick={toggleShowAll}
+              aria-expanded={showAll}
+              aria-controls="services-content"
+              type="button"
+              className="inline-flex items-center justify-center gap-2  rounded-full border-2 border-blue-logo bg-transparent
+      px-3 py-2.5 font-space text-sm font-bold tracking-wide  text-blue-800 transition-all duration-300
+      hover:border-green-logo hover:bg-green-logo  hover:text-white hover:shadow-lg active:border-green-logo active:bg-green-logo
+    active:text-white active:scale-95  focus-visible:outline-2 focus-visible:outline-offset-4
+      focus-visible:outline-teal-500
+      md:px-6 md:py-3.5"
+            >
+              {showAll ? (
+                <>
+                  <FiColumns aria-hidden="true" size={18} />
+                  Back to Slider
+                </>
+              ) : (
+                <>
+                  <FiGrid aria-hidden="true" size={18} />
+                  See All Services
+                </>
+              )}
+            </button>
+            {/* cta button  */}
+            <CtaButton
+              id="contact"
+              text="Plan Your Project"
+              icon={<GoArrowUpRight aria-hidden="true" />}
+              font="font-space"
+            />
           </div>
-          <CtaButton
-            id="contact"
-            text="Plan Your Project"
-            icon={<GoArrowUpRight aria-hidden="true" />}
-            font="font-space"
-          />
         </div>
       </div>
     </section>
