@@ -2,7 +2,7 @@
 
 A modern, responsive landing page for a fictional digital agency, developed as part of the **AppRo8 Frontend Internship task**.
 
-![WebSol Landing Page Preview](./screenshots/websol-preview.png)
+![WebSol Landing Page Preview](./public/websol-preview.png)
 
 Built with a focus on responsive design, interactive components, smooth animations, and accessibility.
 
