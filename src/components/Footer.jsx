@@ -6,7 +6,56 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { GrInstagram } from "react-icons/gr";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdOutlineLocationOn } from "react-icons/md";
+import { motion, useReducedMotion } from "motion/react";
 function Footer() {
+  const shouldReduceMotion = useReducedMotion();
+
+const columnVariants = {
+  left: {
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : -35,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  },
+
+  bottom: {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 25,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  },
+
+  right: {
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : 35,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  },
+};
   return (
     <footer className="bg-gray-100 pt-8 md:pt-10 lg:pt-12 border-t border-green-logo">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
@@ -17,7 +66,12 @@ function Footer() {
   lg:gap-10 ml-2 md:ml-0"
         >
           {/* logo & motto & social media */}
-          <div className="flex min-w-0 flex-col items-start gap-3  sm:col-span-2 lg:col-span-1">
+          <motion.div
+            variants={columnVariants.left}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.15 }}
+           className="flex min-w-0 flex-col items-start gap-3  sm:col-span-2 lg:col-span-1">
             <a
               href="#home"
               aria-label="WebSol home"
@@ -73,9 +127,14 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
                 <GrInstagram aria-hidden="true" />
               </a>
             </div>
-          </div>
+          </motion.div>
           {/* QUICK LINKS */}
-          <div className="flex flex-col items-start gap-2">
+          <motion.div 
+            variants={columnVariants.bottom}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.15 }}
+          className="flex flex-col items-start gap-2">
             <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">
               QUICK LINKS
             </h2>
@@ -120,9 +179,14 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
             >
               Contact
             </a>
-          </div>
+          </motion.div>
           {/* CONTACT  */}
-          <div className="flex min-w-0 flex-col items-start gap-2">
+          <motion.div 
+           variants={columnVariants.right}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.15 }}
+          className="flex min-w-0 flex-col items-start gap-2">
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">
               CONTACT
             </p>
@@ -165,15 +229,20 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
               />
               <span>123 Main Street, London, United Kingdom</span>
             </address>
-          </div>
+          </motion.div>
         </div>
 
         {/* copy */}
-        <div className="mt-8 border-t border-teal-800/15 py-5">
+        <motion.div
+          initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true, amount: 0.5 }}
+  transition={{ duration: shouldReduceMotion ? 0.01 : 0.7 }}
+         className="mt-8 border-t border-teal-800/15 py-5">
           <p className="text-center text-sm text-gray-500">
             &copy; 2026 WebSol. All rights reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

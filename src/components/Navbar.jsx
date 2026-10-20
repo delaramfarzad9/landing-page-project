@@ -9,6 +9,7 @@ import { TbTools } from "react-icons/tb";
 import { IoHomeOutline, IoMailOutline } from "react-icons/io5";
 import CtaButton from "./CtaButton";
 import { GoArrowUpRight } from "react-icons/go";
+import { motion } from "motion/react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,10 +126,7 @@ function Navbar() {
       }
     }
 
-    // Check the viewport width when the component mounts.
-    if (mediaQuery.matches) {
-      setIsMenuOpen(false);
-    }
+   
 
     // Listen for changes across the desktop breakpoint.
     mediaQuery.addEventListener("change", handleBreakpointChange);
@@ -144,7 +142,10 @@ function Navbar() {
         className=" h-16 sticky  top-0 left-0 right-0 z-50   backdrop-blur-xl bg-stone-200/50    transition-colors duration-300
     shadow-lg font-space tracking-tighter"
       >
-        <nav
+        <motion.nav
+          initial={{ opacity: 0, y: -12 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5, ease: "easeOut" }}
           aria-label="Main navigation"
           className="relative z-50 mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 md:px-10 lg:px-12 "
         >
@@ -186,7 +187,7 @@ function Navbar() {
               <IoMdMenu aria-hidden="true" className="text-2xl" />
             )}
           </button>
-        </nav>
+        </motion.nav>
       </header>
 
       {createPortal(
