@@ -8,11 +8,13 @@ import { FiZap } from "react-icons/fi";
 import FloatingSticker from "./FloatingSticker";
 import { LuMonitorSmartphone } from "react-icons/lu";
 import { FiTrendingUp} from "react-icons/fi";
+import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 const slides = [project1, project2, project3];
 
 function MonitorSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showStickers, setShowStickers] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const { scrollY } = useScroll();
 
@@ -20,18 +22,28 @@ function MonitorSlider() {
     setShowStickers(latest > 30);
   });
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3500);
+useEffect(() => {
+  if (isPaused) return;
 
-    return () => clearTimeout(timeout);
-  }, [currentSlide]);
+  const timeout = setTimeout(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, 3500);
 
+  return () => clearTimeout(timeout);
+}, [currentSlide, isPaused]);
   return (
     <div className="relative w-full max-w-5xl mx-auto">
       {/* monitor */}
-<div className="relative mx-auto w-[90%] lg:w-[85%]">
+<div
+  className="relative mx-auto w-[90%] lg:w-[85%]"
+  onPointerDown={(e) => {
+    if (e.target.closest("button")) return;
+    setIsPaused(true);
+  }}
+  onPointerUp={() => setIsPaused(false)}
+  onPointerCancel={() => setIsPaused(false)}
+  onPointerLeave={() => setIsPaused(false)}
+>
         {/*  frame */}
         <div className="rounded-3xl bg-linear-to-b from-gray-800 via-gray-600 to-gray-900 p-3 shadow-2xl">
           {/* webcam */}
@@ -47,11 +59,35 @@ function MonitorSlider() {
                 <img
                   key={index}
                   src={slide}
+                    draggable={false}
                   alt={`Project preview ${index + 1}`}
                   className="h-full w-full shrink-0 object-cover"
                 />
               ))}
             </div>
+            {/* Previous slide */}
+<button
+  type="button"
+  onClick={() =>
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length)
+  }
+  aria-label="Previous project"
+className="absolute left-2 top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/30 text-white shadow-md transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-white hover:shadow-lg active:bg-green-logo active:border-green-logo active:text-white active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-logo"
+>
+  <IoChevronBack aria-hidden="true" />
+</button>
+
+{/* Next slide */}
+<button
+  type="button"
+  onClick={() =>
+    setCurrentSlide((prev) => (prev + 1) % slides.length)
+  }
+  aria-label="Next project"
+className="absolute right-2 top-1/2 z-10 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-black/30 text-white shadow-md transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-white hover:shadow-lg active:bg-green-logo active:border-green-logo active:text-white active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green-logo"
+>
+  <IoChevronForward aria-hidden="true" />
+</button>
           </div>
         </div>
 
