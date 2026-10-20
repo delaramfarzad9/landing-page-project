@@ -1,16 +1,55 @@
-# React + Vite
+# WebSol — Digital Agency Landing Page
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive landing page for a fictional digital agency, developed as part of the **AppRo8 Frontend Internship task**.
 
-Currently, two official plugins are available:
+![WebSol Landing Page Preview](./screenshots/websol-preview.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Built with a focus on responsive design, interactive components, smooth animations, and accessibility.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React.js
+- JavaScript (ES6+)
+- Vite
+- Tailwind CSS v4
+- Motion for React
+- Embla Carousel
+- React Icons
+- React Router
+- Vercel
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Responsive Design & Navigation
+- Mobile-first layout for desktop, tablet, and mobile
+- Sticky navbar with smooth section navigation
+- Animated mobile menu with keyboard and Escape key support
+- Back to Top button with smooth scrolling
+
+### Interactive Components
+- Automatic hero slideshow with manual controls and press-to-pause
+- Responsive services carousel with navigation controls
+- Interactive contact form with client-side validation and error feedback
+
+### Animations & Accessibility
+- Scroll-triggered entrance animations and interactive hover effects
+- Animated floating elements in the hero section
+- Reduced-motion support
+- Semantic HTML, accessible labels, and visible keyboard focus indicators
+
+## Getting Started
+
+```bash
+git clone https://github.com/delaramfarzad9/landing-page-project.git
+cd landing-page-project
+npm install
+npm run dev
+```
+
+## Live Demo
+
+[View WebSol](https://landing-page-project-rose.vercel.app/)
+
+## Note
+
+This is a frontend demonstration project. The contact form validates user input but is not connected to a backend or email service.
