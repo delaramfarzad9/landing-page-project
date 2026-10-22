@@ -1,8 +1,8 @@
 # WebSol — Digital Agency Landing Page
 
-A modern, responsive landing page for a fictional digital agency, developed as part of the **AppRo8 Frontend Internship task**.
+A modern, responsive landing page for **WebSol**, a digital agency specialising in web design and development.
 
-Built with a focus on responsive design, interactive components, smooth animations, and accessibility.
+Built with a focus on responsive design, interactive components, smooth animations, accessibility, and a seamless user experience.
 
 ![WebSol Landing Page Preview](./public/websol-preview.png)
 
