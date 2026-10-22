@@ -25,7 +25,7 @@ function ContactForm() {
   }
   function handleSubmit(event) {
     event.preventDefault();
-
+    setSubmitStatus("");
     const newErrors = {};
 
     if (!formData.fullName.trim()) {

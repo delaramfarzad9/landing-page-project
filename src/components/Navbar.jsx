@@ -9,10 +9,11 @@ import { TbTools } from "react-icons/tb";
 import { IoHomeOutline, IoMailOutline } from "react-icons/io5";
 import CtaButton from "./CtaButton";
 import { GoArrowUpRight } from "react-icons/go";
-import { motion } from "motion/react";
+import { motion, AnimatePresence, useReducedMotion } from "motion/react";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const menuButtonRef = useRef(null);
   const menuRef = useRef(null);
   const logoRef = useRef(null);
@@ -124,9 +125,7 @@ function Navbar() {
       if (event.matches) {
         setIsMenuOpen(false);
       }
-    }
-
-   
+    };
 
     // Listen for changes across the desktop breakpoint.
     mediaQuery.addEventListener("change", handleBreakpointChange);
@@ -143,9 +142,15 @@ function Navbar() {
     shadow-lg font-space tracking-tighter"
       >
         <motion.nav
-          initial={{ opacity: 0, y: -12 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.5, ease: "easeOut" }}
+          initial={{
+            opacity: 0,
+            y: shouldReduceMotion ? 0 : -12,
+          }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: shouldReduceMotion ? 0.01 : 0.5,
+            ease: "easeOut",
+          }}
           aria-label="Main navigation"
           className="relative z-50 mx-auto flex h-full w-full max-w-7xl items-center justify-between px-4 md:px-10 lg:px-12 "
         >
@@ -162,9 +167,8 @@ function Navbar() {
           {/* desktop menu  */}
           <div className=" hidden md:flex flex-row gap-6 lg:gap-8 text-blue-800 *:text-lg *:font-bold *:transition-colors  *:duration-200 *:hover:text-green-logo *:focus-visible:outline-2 *:focus-visible:outline-offset-4 *:focus-visible:outline-teal-500">
             <a href="#home">Home</a>
-            <a href="#about">About</a>
             <a href="#services">Services</a>
-
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
           {/* MOBILE menu with backdrop */}
@@ -181,11 +185,33 @@ function Navbar() {
             onClick={() => setIsMenuOpen((prev) => !prev)}
             className="flex size-11 items-center justify-center rounded-lg text-blue-800 transition-colors hover:bg-blue-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-logo md:hidden"
           >
-            {isMenuOpen ? (
-              <IoMdClose aria-hidden="true" className="text-2xl" />
-            ) : (
-              <IoMdMenu aria-hidden="true" className="text-2xl" />
-            )}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={isMenuOpen ? "close" : "menu"}
+                initial={{
+                  opacity: shouldReduceMotion ? 1 : 0,
+                  rotate: shouldReduceMotion ? 0 : -90,
+                  scale: shouldReduceMotion ? 1 : 0.8,
+                }}
+                animate={{ opacity: 1, rotate: 0, scale: 1 }}
+                exit={{
+                  opacity: shouldReduceMotion ? 1 : 0,
+                  rotate: shouldReduceMotion ? 0 : 90,
+                  scale: shouldReduceMotion ? 1 : 0.8,
+                }}
+                transition={{
+                  duration: shouldReduceMotion ? 0 : 0.25,
+                  ease: "easeInOut",
+                }}
+                className="flex items-center justify-center"
+              >
+                {isMenuOpen ? (
+                  <IoMdClose aria-hidden="true" className="text-2xl" />
+                ) : (
+                  <IoMdMenu aria-hidden="true" className="text-2xl" />
+                )}
+              </motion.span>
+            </AnimatePresence>
           </button>
         </motion.nav>
       </header>

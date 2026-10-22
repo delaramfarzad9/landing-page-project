@@ -1,4 +1,3 @@
-
 function ServiceCard({ service, index }) {
   const Icon = service.icon;
 

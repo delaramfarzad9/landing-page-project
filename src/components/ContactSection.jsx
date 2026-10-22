@@ -46,99 +46,108 @@ const socialLinks = [
 function ContactSection() {
   const shouldReduceMotion = useReducedMotion();
 
-const headerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: shouldReduceMotion ? 0 : 0.12,
+  const headerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+      },
     },
-  },
-};
+  };
 
-const headerItemVariants = {
-  hidden: {
-    opacity: 0,
-    y: shouldReduceMotion ? 0 : -20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: shouldReduceMotion ? 0.01 : 0.55,
-      ease: "easeOut",
+  const headerItemVariants = {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : -20,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.55,
+        ease: "easeOut",
+      },
+    },
+  };
 
-const leftVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: shouldReduceMotion ? 0 : 0.12,
-      delayChildren: shouldReduceMotion ? 0 : 0.15,
+  const leftVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+        delayChildren: shouldReduceMotion ? 0 : 0.15,
+      },
     },
-  },
-};
+  };
 
-const leftItemVariants = {
-  hidden: {
-    opacity: 0,
-    x: shouldReduceMotion ? 0 : -30,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: shouldReduceMotion ? 0.01 : 0.65,
-      ease: "easeOut",
+  const leftItemVariants = {
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : -30,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.65,
+        ease: "easeOut",
+      },
+    },
+  };
   return (
     <section id="contact" className=" py-6 md:py-8 lg:py-10 xl:py-12">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 md:gap-8 md:px-10 lg:gap-10 lg:px-12">
         {/* header  */}
-     <motion.div
-  variants={headerVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
-  className="flex flex-col items-center gap-2 text-center"
->
-  <motion.p
-    variants={headerItemVariants}
-    className="text-blue-800 font-semibold tracking-wider text-sm font-space">
-    LET'S CONNECT
-  </motion.p>
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          className="flex flex-col items-center gap-2 text-center"
+        >
+          <motion.p
+            variants={headerItemVariants}
+            className="text-blue-800 font-semibold tracking-wider text-sm font-space"
+          >
+            LET'S CONNECT
+          </motion.p>
 
-  <motion.h2
-    variants={headerItemVariants}
-    className="text-blue-800 font-bold text-2xl sm:text-3xl md:text-4xl font-space">
-    Have a Project in Mind?
-  </motion.h2>
+          <motion.h2
+            variants={headerItemVariants}
+            className="text-blue-800 font-bold text-2xl sm:text-3xl md:text-4xl font-space"
+          >
+            Have a Project in Mind?
+          </motion.h2>
 
-  <motion.p variants={headerItemVariants} className="text-gray-600">
-    Tell us what you're building. We'd love to hear your ideas.
-  </motion.p>
-</motion.div>
+          <motion.p variants={headerItemVariants} className="text-gray-600">
+            Tell us what you're building. We'd love to hear your ideas.
+          </motion.p>
+        </motion.div>
         {/* section  */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10">
           {/* text  */}
           <div className="flex flex-col gap-2">
             {/* contactInfo  */}
             <motion.div
-            variants={leftVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-             className="mt-2 flex flex-col gap-1 border-b border-teal-200 pb-4 sm:pb-6 max-w-lg">
-              <motion.h3   variants={leftItemVariants}
-               className="text-blue-800 font-semibold text-xl sm:text-2xl font-space mt-2">
+              variants={leftVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.15 }}
+              className="mt-2 flex flex-col gap-1 border-b border-teal-200 pb-4 sm:pb-6 max-w-lg"
+            >
+              <motion.h3
+                variants={leftItemVariants}
+                className="text-blue-800 font-semibold text-xl sm:text-2xl font-space mt-2"
+              >
                 Contact Information
               </motion.h3>
               <motion.div className="flex flex-col gap-2 mt-3 sm:mt-5">
                 {contactInfo.map((item) => (
-                  <motion.div  variants={leftItemVariants} key={item.id} className="group flex items-center gap-3">
+                  <motion.div
+                    variants={leftItemVariants}
+                    key={item.id}
+                    className="group flex items-center gap-3"
+                  >
                     <div
                       className="flex size-11 shrink-0 sm:size-14 items-center justify-center rounded-xl
   bg-blue-logo/10 text-blue-logo
@@ -179,17 +188,18 @@ const leftItemVariants = {
             </motion.div>
             <motion.div
               initial={{
-    opacity: 0,
-    x: shouldReduceMotion ? 0 : -30,
-  }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true, amount: 0.15 }}
-  transition={{
-    duration: shouldReduceMotion ? 0.01 : 0.65,
-    delay: shouldReduceMotion ? 0 : 0.5,
-    ease: "easeOut",
-  }}
-             className="flex flex-col gap-2 sm:gap-3">
+                opacity: 0,
+                x: shouldReduceMotion ? 0 : -30,
+              }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{
+                duration: shouldReduceMotion ? 0.01 : 0.65,
+                delay: shouldReduceMotion ? 0 : 0.5,
+                ease: "easeOut",
+              }}
+              className="flex flex-col gap-2 sm:gap-3"
+            >
               <h3 className="text-blue-800 font-semibold text-lg sm:text-xl mt-2 sm:mt-4 font-space">
                 Follow Us
               </h3>
@@ -218,19 +228,20 @@ const leftItemVariants = {
           </div>
 
           {/* form  */}
-          <motion.div 
+          <motion.div
             initial={{
-    opacity: 0,
-    x: shouldReduceMotion ? 0 : 30,
-  }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true, amount: 0.15 }}
-  transition={{
-    duration: shouldReduceMotion ? 0.01 : 0.75,
-    delay: shouldReduceMotion ? 0 : 0.35,
-    ease: "easeOut",
-  }}
-          className="min-w-0">
+              opacity: 0,
+              x: shouldReduceMotion ? 0 : 30,
+            }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: shouldReduceMotion ? 0.01 : 0.75,
+              delay: shouldReduceMotion ? 0 : 0.35,
+              ease: "easeOut",
+            }}
+            className="min-w-0"
+          >
             <ContactForm />
           </motion.div>
         </div>

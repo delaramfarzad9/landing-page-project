@@ -7,10 +7,8 @@ function StatsBar({ stats, font }) {
           className="group flex min-w-0 flex-col items-center justify-center gap-1 p-2 sm:p-4"
         >
           <p
-            className={`text-2xl font-bold text-white
-  transition-transform duration-300
-  motion-safe:group-hover:-translate-y-1
-  motion-safe:group-active:-translate-y-1
+            className={`text-2xl font-bold text-white transition-transform duration-300
+  motion-safe:group-hover:-translate-y-1 motion-safe:group-active:-translate-y-1
   ${font}`}
           >
             {stat.value}

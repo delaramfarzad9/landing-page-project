@@ -5,20 +5,18 @@ import BackToTop from "../components/BackToTop";
 
 function MainLayout() {
   return (
-   <>
-    <div className="min-h-screen flex flex-col overflow-x-clip">
-      <Navbar />
+    <>
+      <div className="min-h-screen flex flex-col overflow-x-clip">
+        <Navbar />
 
-      <main className="flex-1">
-        <Outlet />
-      </main>
+        <main className="flex-1">
+          <Outlet />
+        </main>
 
-      <Footer />
-     <BackToTop />
-    </div>
-     
-   </>
-    
+        <Footer />
+        <BackToTop />
+      </div>
+    </>
   );
 }
 

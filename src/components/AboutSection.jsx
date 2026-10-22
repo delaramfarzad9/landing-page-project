@@ -55,54 +55,54 @@ const checkedpoints = [
 function AboutSection() {
   const shouldReduceMotion = useReducedMotion();
 
-const leftVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: shouldReduceMotion ? 0 : 0.15,
+  const leftVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.15,
+      },
     },
-  },
-};
+  };
 
-const rightVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: shouldReduceMotion ? 0 : 0.18,
-      delayChildren: shouldReduceMotion ? 0 : 0.2,
+  const rightVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.18,
+        delayChildren: shouldReduceMotion ? 0 : 0.2,
+      },
     },
-  },
-};
+  };
 
-const leftItemVariants = {
-  hidden: {
-    opacity: 0,
-    x: shouldReduceMotion ? 0 : -40,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: shouldReduceMotion ? 0.01 : 0.6,
-      ease: "easeOut",
+  const leftItemVariants = {
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : -40,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
 
-const rightItemVariants = {
-  hidden: {
-    opacity: 0,
-    x: shouldReduceMotion ? 0 : 40,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: shouldReduceMotion ? 0.01 : 0.6,
-      ease: "easeOut",
+  const rightItemVariants = {
+    hidden: {
+      opacity: 0,
+      x: shouldReduceMotion ? 0 : 40,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
   return (
     <section id="about" className="py-4 md:py-8 lg:py-10 xl:py-12">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
@@ -110,21 +110,24 @@ const rightItemVariants = {
         <div className="flex flex-col gap-10 xl:flex-row xl:items-center ml-1 md:ml-0">
           {/* header  */}
           <motion.div
-     variants={leftVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-           className="flex w-full min-w-0 flex-col items-start gap-1 xl:w-auto xl:flex-1">
+            variants={leftVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex w-full min-w-0 flex-col items-start gap-1 xl:w-auto xl:flex-1"
+          >
             <motion.div variants={leftItemVariants}>
-               <p className="text-blue-800 font-semibold tracking-wider text-sm font-space ">
-              WHO WE ARE
-            </p>
-            <h2 className="text-blue-800 font-bold text-3xl sm:text-4xl font-space">
-              Creative Thinking. Smart Development.
-            </h2>
+              <p className="text-blue-800 font-semibold tracking-wider text-sm font-space ">
+                WHO WE ARE
+              </p>
+              <h2 className="text-blue-800 font-bold text-3xl sm:text-4xl font-space">
+                Creative Thinking. Smart Development.
+              </h2>
             </motion.div>
-            <motion.p variants={leftItemVariants}
-            className="text-gray-600 mt-2">
+            <motion.p
+              variants={leftItemVariants}
+              className="text-gray-600 mt-2"
+            >
               WebSol is a creative digital agency specialising in web
               development, UI/UX design, branding, and digital solutions. We
               combine creativity and technology to build modern, engaging
@@ -133,8 +136,11 @@ const rightItemVariants = {
             </motion.p>
             <motion.div className="flex flex-col items-start  space-y-2 mt-6">
               {checkedpoints.map((point) => (
-                <motion.div key={point}   variants={leftItemVariants}
-                 className="flex gap-2 items-start">
+                <motion.div
+                  key={point}
+                  variants={leftItemVariants}
+                  className="flex gap-2 items-start"
+                >
                   <FiCheckCircle
                     aria-hidden="true"
                     className="text-blue-logo shrink-0"
@@ -145,25 +151,27 @@ const rightItemVariants = {
               ))}
             </motion.div>
             {/* cta  */}
-        <motion.div variants={leftItemVariants} className="mt-6">
+            <motion.div variants={leftItemVariants} className="mt-6">
               <CtaButton
-              id="contact"
-              text="Let's work together"
-              icon={<GoArrowUpRight aria-hidden="true" />}
-              font="font-space"
-            />
-        </motion.div>
+                id="contact"
+                text="Let's work together"
+                icon={<GoArrowUpRight aria-hidden="true" />}
+                font="font-space"
+              />
+            </motion.div>
           </motion.div>
 
           {/* visual  */}
           <motion.div
             variants={rightVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-           className="flex w-full min-w-0 flex-col gap-3 xl:w-auto xl:flex-1 ">
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex w-full min-w-0 flex-col gap-3 xl:w-auto xl:flex-1 "
+          >
             {aboutCards.map((card) => (
-              <motion.div variants={rightItemVariants}
+              <motion.div
+                variants={rightItemVariants}
                 key={card.id}
                 className="group flex items-start gap-4 rounded-lg border border-gray-100 p-4 shadow-md
   transition-[box-shadow,border-color] duration-300 ease-in-out hover:shadow-xl  active:shadow-xl  active:border-green-logo/40"
@@ -188,9 +196,8 @@ const rightItemVariants = {
             ))}
             {/* statistics panel  */}
             <motion.div variants={rightItemVariants}>
- <StatsBar stats={accomplishments} font="font-space" />
+              <StatsBar stats={accomplishments} font="font-space" />
             </motion.div>
-           
           </motion.div>
         </div>
       </div>

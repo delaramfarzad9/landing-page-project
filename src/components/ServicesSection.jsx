@@ -107,60 +107,63 @@ function ServicesSection() {
   };
   const shouldReduceMotion = useReducedMotion();
 
-const headerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: shouldReduceMotion ? 0 : 0.12,
+  const headerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: shouldReduceMotion ? 0 : 0.12,
+      },
     },
-  },
-};
+  };
 
-const headerItemVariants = {
-  hidden: {
-    opacity: 0,
-    y: shouldReduceMotion ? 0 : -20,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: shouldReduceMotion ? 0.01 : 0.55,
-      ease: "easeOut",
+  const headerItemVariants = {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : -20,
     },
-  },
-};
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: shouldReduceMotion ? 0.01 : 0.55,
+        ease: "easeOut",
+      },
+    },
+  };
   return (
     <section id="services" className=" py-6 md:py-8 lg:py-10 xl:py-12 ">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
         {/* header  */}
         <motion.div
           ref={headerRef}
-            variants={headerVariants}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.3 }}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           className="flex scroll-mt-20 flex-col items-center gap-2 text-center"
         >
-          <motion.p 
-           variants={headerItemVariants}
-          className="text-blue-800 font-semibold tracking-wider text-sm font-space">
+          <motion.p
+            variants={headerItemVariants}
+            className="text-blue-800 font-semibold tracking-wider text-sm font-space"
+          >
             WHAT WE DO
           </motion.p>
           <motion.h2
-          variants={headerItemVariants}
-           className="text-blue-800 font-bold text-3xl font-space">
+            variants={headerItemVariants}
+            className="text-blue-800 font-bold text-3xl font-space"
+          >
             Our Expertise
           </motion.h2>
-          <motion.p
-          variants={headerItemVariants} 
-          className="text-gray-600 ">
+          <motion.p variants={headerItemVariants} className="text-gray-600 ">
             Everything you need to bring your digital vision to life.
           </motion.p>
         </motion.div>
         {/* cards section */}
         {showAll ? (
-          <div id="services-content" className="my-6 grid grid-cols-1 gap-6 px-2 pt-6 pb-10 md:grid-cols-2 lg:grid-cols-3">
+          <div
+            id="services-content"
+            className="my-6 grid grid-cols-1 gap-6 px-2 pt-6 pb-10 md:grid-cols-2 lg:grid-cols-3"
+          >
             {services.map((service, index) => (
               <div
                 key={service.id}
@@ -174,80 +177,85 @@ const headerItemVariants = {
             ))}
           </div>
         ) : (
-     <motion.div     initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.15 }}
-    transition={{
-      duration: shouldReduceMotion ? 0.01 : 0.7,
-      ease: "easeOut",
-    }}
-     >
-           <div
-          id="services-content"
-            ref={emblaRef}
-            className="   px-2  pt-6 pb-10 my-6 overflow-hidden  mb-2  "
+          <motion.div
+            initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: shouldReduceMotion ? 0.01 : 0.7,
+              ease: "easeOut",
+            }}
           >
-            {/* Embla viewport */}
-            {/* Embla container */}
-            <div className="-ml-5 flex touch-pan-y">
-              {services.map((service, index) => (
-                <div
-                  key={service.id}
-                  className="min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3"
-                >
-                  <ServiceCard service={service} index={index} />
-                </div>
-              ))}
+            <div
+              id="services-content"
+              ref={emblaRef}
+              className="   px-2  pt-6 pb-10 my-6 overflow-hidden  mb-2  "
+            >
+              {/* Embla viewport */}
+              {/* Embla container */}
+              <div className="-ml-5 flex touch-pan-y">
+                {services.map((service, index) => (
+                  <div
+                    key={service.id}
+                    className="min-w-0 basis-full shrink-0 pl-5 md:basis-1/2 lg:basis-1/3"
+                  >
+                    <ServiceCard service={service} index={index} />
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-     </motion.div>
+          </motion.div>
         )}
         {/* End Embla container */}
         {/* End Embla viewport */}
         {/* Carousel navigation & cta */}
         <div className="flex flex-wrap items-center justify-between gap-4 mb-8 ">
-      {!showAll && (    <motion.div 
-          initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -35 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{
-      duration: shouldReduceMotion ? 0.01 : 0.6,
-      ease: "easeOut",
-    }}
-      className=" flex justify-end gap-3 *:text-gray-600 *:shadow ">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous services"
-              className="rounded-full border border-gray-300 p-3 transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
+          {!showAll && (
+            <motion.div
+              initial={{ opacity: 0, x: shouldReduceMotion ? 0 : -35 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: shouldReduceMotion ? 0.01 : 0.6,
+                ease: "easeOut",
+              }}
+              className=" flex justify-end gap-3 *:text-gray-600 *:shadow "
+            >
+              <button
+                type="button"
+                onClick={handlePrev}
+                aria-label="Previous services"
+                className="rounded-full border border-gray-300 p-3 transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
  active:bg-green-logo active:border-green-logo active:text-white
     active:scale-95 focus-visible:outline-2   focus-visible:outline-offset-4  focus-visible:outline-green-logo"
-            >
-              <FiArrowLeft size={20} />
-            </button>
+              >
+                <FiArrowLeft size={20} />
+              </button>
 
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next services"
-              className="rounded-full border border-gray-300 p-3
+              <button
+                type="button"
+                onClick={handleNext}
+                aria-label="Next services"
+                className="rounded-full border border-gray-300 p-3
     transition-all duration-200 hover:bg-green-logo hover:border-green-logo hover:text-gray-100 hover:shadow-lg
  active:bg-green-logo active:border-green-logo active:text-white active:scale-95 focus-visible:outline-2
     focus-visible:outline-offset-4 focus-visible:outline-green-logo"
-            >
-              <FiArrowRight size={20} />
-            </button>
-          </motion.div>)}
+              >
+                <FiArrowRight size={20} />
+              </button>
+            </motion.div>
+          )}
           {/* CTA button & see all services button */}
-         <motion.div
-           initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 35 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{
-    duration: shouldReduceMotion ? 0.01 : 0.6,
-    ease: "easeOut",
-  }}
-          className="ml-auto flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+          <motion.div
+            initial={{ opacity: 0, x: shouldReduceMotion ? 0 : 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{
+              duration: shouldReduceMotion ? 0.01 : 0.6,
+              ease: "easeOut",
+            }}
+            className="ml-auto flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center"
+          >
             {/* show all services button  */}
             <button
               onClick={toggleShowAll}

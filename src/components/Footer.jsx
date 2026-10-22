@@ -10,54 +10,54 @@ import { motion, useReducedMotion } from "motion/react";
 function Footer() {
   const shouldReduceMotion = useReducedMotion();
 
-const columnVariants = {
-  left: {
-    hidden: {
-      opacity: 0,
-      x: shouldReduceMotion ? 0 : -35,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0.01 : 0.75,
-        ease: [0.22, 1, 0.36, 1],
+  const columnVariants = {
+    left: {
+      hidden: {
+        opacity: 0,
+        x: shouldReduceMotion ? 0 : -35,
+      },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: shouldReduceMotion ? 0.01 : 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        },
       },
     },
-  },
 
-  bottom: {
-    hidden: {
-      opacity: 0,
-      y: shouldReduceMotion ? 0 : 25,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0.01 : 0.75,
-        ease: [0.22, 1, 0.36, 1],
+    bottom: {
+      hidden: {
+        opacity: 0,
+        y: shouldReduceMotion ? 0 : 25,
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: shouldReduceMotion ? 0.01 : 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        },
       },
     },
-  },
 
-  right: {
-    hidden: {
-      opacity: 0,
-      x: shouldReduceMotion ? 0 : 35,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0.01 : 0.75,
-        ease: [0.22, 1, 0.36, 1],
+    right: {
+      hidden: {
+        opacity: 0,
+        x: shouldReduceMotion ? 0 : 35,
+      },
+      visible: {
+        opacity: 1,
+        x: 0,
+        transition: {
+          duration: shouldReduceMotion ? 0.01 : 0.75,
+          ease: [0.22, 1, 0.36, 1],
+        },
       },
     },
-  },
-};
+  };
   return (
-    <footer className="bg-gray-100 pt-8 md:pt-10 lg:pt-12 border-t border-green-logo">
+    <footer className="relative isolate bg-gray-100 pt-8 md:pt-10 lg:pt-12 border-t border-green-logo">
       <div className="mx-auto w-full max-w-7xl px-4 md:px-10 lg:px-12">
         <div
           className="grid grid-cols-1 gap-8
@@ -68,10 +68,11 @@ const columnVariants = {
           {/* logo & motto & social media */}
           <motion.div
             variants={columnVariants.left}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-           className="flex min-w-0 flex-col items-start gap-3  sm:col-span-2 lg:col-span-1">
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex min-w-0 flex-col items-start gap-3  sm:col-span-2 lg:col-span-1"
+          >
             <a
               href="#home"
               aria-label="WebSol home"
@@ -129,12 +130,13 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
             </div>
           </motion.div>
           {/* QUICK LINKS */}
-          <motion.div 
+          <motion.div
             variants={columnVariants.bottom}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-          className="flex flex-col items-start gap-2">
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex flex-col items-start gap-2"
+          >
             <h2 className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">
               QUICK LINKS
             </h2>
@@ -181,12 +183,13 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
             </a>
           </motion.div>
           {/* CONTACT  */}
-          <motion.div 
-           variants={columnVariants.right}
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.15 }}
-          className="flex min-w-0 flex-col items-start gap-2">
+          <motion.div
+            variants={columnVariants.right}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            className="flex min-w-0 flex-col items-start gap-2"
+          >
             <p className="text-xs font-semibold uppercase tracking-[0.15em] text-blue-800 mb-2">
               CONTACT
             </p>
@@ -227,7 +230,7 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
   justify-center rounded-lg bg-blue-logo/10 p-2 transition-colors duration-300 group-hover:bg-green-logo/90
   group-hover:text-gray-100 group-active:bg-green-logo/90 group-active:text-gray-100"
               />
-              <span>123 Main Street, London, United Kingdom</span>
+              <span>123 High Street, London, United Kingdom</span>
             </address>
           </motion.div>
         </div>
@@ -235,10 +238,11 @@ focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gre
         {/* copy */}
         <motion.div
           initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true, amount: 0.5 }}
-  transition={{ duration: shouldReduceMotion ? 0.01 : 0.7 }}
-         className="mt-8 border-t border-teal-800/15 py-5">
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0.01 : 0.7 }}
+          className="mt-8 border-t border-teal-800/15 py-5"
+        >
           <p className="text-center text-sm text-gray-500">
             &copy; 2026 WebSol. All rights reserved.
           </p>
